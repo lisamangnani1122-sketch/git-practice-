@@ -5,14 +5,14 @@ on:
     branches: [ main ]
 
 jobs:
-  say-hello:
+  build-docker-image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Say hello
-        run: echo "Hello from the CI/CD pipeline!"
+      - name: Build Docker image
+        run: docker build -t my-first-app .
 
-      - name: Show files in repo
-        run: ls -la
+      - name: Run the container
+        run: docker run my-first-app
